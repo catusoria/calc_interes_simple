@@ -1,1 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Interés Simple Mensual</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💰 Calculadora de Interés Simple</h1>
+            <p>Calcula tus pagos mensuales con precisión</p>
+        </div>
 
+        <div class="content">
+            <div class="form-section">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="fechaInicio">Fecha de Inicio</label>
+                        <input type="date" id="fechaInicio" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="capital">Capital Inicial (Q)</label>
+                        <input type="number" id="capital" placeholder="Ej: 10000" step="0.01" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tasa">Tasa de Interés (%)</label>
+                        <input type="number" id="tasa" placeholder="Ej: 15" step="0.01" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="meses">Número de Meses</label>
+                        <input type="number" id="meses" placeholder="Ej: 12" min="1" required>
+                    </div>
+
+                    <div class="tipo-calculo">
+                        <h3>Tipo de Cálculo</h3>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="tipoCalculo" value="cuotaFija" checked>
+                                <span>Cuota Fija (Capital + Interés dividido en cuotas iguales)</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="tipoCalculo" value="sobreSaldo">
+                                <span>Sobre Saldo (Interés calculado sobre saldo pendiente)</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="calculate-btn" onclick="calcular()">
+                    🧮 Calcular Interés
+                </button>
+            </div>
+
+            <div id="results" class="results-section">
+                <div class="summary-cards">
+                    <div class="summary-card">
+                        <h3>Capital Inicial</h3>
+                        <div class="value" id="resumenCapital">Q 0.00</div>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Total Intereses</h3>
+                        <div class="value" id="resumenIntereses">Q 0.00</div>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Total a Pagar</h3>
+                        <div class="value" id="resumenTotal">Q 0.00</div>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Cuota Promedio</h3>
+                        <div class="value" id="resumenCuota">Q 0.00</div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="action-btn new-calc-btn" onclick="nuevoCalculo()">
+                        🔄 Nuevo Cálculo
+                    </button>
+                    <button class="action-btn export-btn" onclick="exportarExcel()">
+                        📊 Exportar a Excel
+                    </button>
+                </div>
+
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3>📊 Detalle de Pagos Mensuales</h3>
+                    </div>
+                    <table id="tablaResultados">
+                        <thead>
+                            <tr>
+                                <th>Mes</th>
+                                <th>Fecha de Pago</th>
+                                <th>Saldo Inicial</th>
+                                <th>Capital</th>
+                                <th>Interés</th>
+                                <th>Cuota Total</th>
+                                <th>Saldo Final</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
