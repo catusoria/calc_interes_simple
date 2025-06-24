@@ -1,3 +1,4 @@
+/* Reset y configuración base */
 * {
     margin: 0;
     padding: 0;
@@ -11,6 +12,7 @@ body {
     padding: 20px;
 }
 
+/* Contenedor principal */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -20,6 +22,7 @@ body {
     overflow: hidden;
 }
 
+/* Header */
 .header {
     background: linear-gradient(135deg, #4f46e5, #7c3aed);
     color: white;
@@ -38,10 +41,12 @@ body {
     opacity: 0.9;
 }
 
+/* Contenido principal */
 .content {
     padding: 40px;
 }
 
+/* Sección del formulario */
 .form-section {
     background: #f8fafc;
     border-radius: 15px;
@@ -84,6 +89,7 @@ body {
     box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
 }
 
+/* Tipo de cálculo */
 .tipo-calculo {
     grid-column: 1 / -1;
     background: white;
@@ -124,6 +130,7 @@ body {
     margin: 0;
 }
 
+/* Botones */
 .calculate-btn {
     background: linear-gradient(135deg, #10b981, #059669);
     color: white;
@@ -185,6 +192,7 @@ body {
     box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
 }
 
+/* Sección de resultados */
 .results-section {
     display: none;
     animation: fadeIn 0.5s ease-in;
@@ -195,6 +203,7 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* Tarjetas de resumen */
 .summary-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -225,6 +234,7 @@ body {
     color: #1f2937;
 }
 
+/* Tabla de resultados */
 .table-container {
     background: white;
     border-radius: 12px;
@@ -292,8 +302,44 @@ tbody tr:hover {
     font-size: 0.9em;
 }
 
-@media (max-width: 768px) {
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .container {
+        margin: 10px;
+        border-radius: 15px;
+    }
+    
     .content {
+        padding: 30px;
+    }
+    
+    .header {
+        padding: 25px;
+    }
+    
+    .header h1 {
+        font-size: 2.2em;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .content {
+        padding: 20px;
+    }
+    
+    .header {
+        padding: 20px;
+    }
+    
+    .header h1 {
+        font-size: 2em;
+    }
+    
+    .form-section {
         padding: 20px;
     }
 
@@ -316,6 +362,19 @@ tbody tr:hover {
         justify-content: center;
     }
 
+    .summary-cards {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+    }
+    
+    .summary-card {
+        padding: 15px;
+    }
+    
+    .summary-card .value {
+        font-size: 1.3em;
+    }
+
     table {
         font-size: 14px;
     }
@@ -323,8 +382,103 @@ tbody tr:hover {
     th, td {
         padding: 10px 8px;
     }
+    
+    .table-header {
+        padding: 15px;
+    }
+    
+    .table-header h3 {
+        font-size: 1.1em;
+    }
+}
 
+@media (max-width: 480px) {
     .header h1 {
-        font-size: 2em;
+        font-size: 1.8em;
+    }
+    
+    .header p {
+        font-size: 1em;
+    }
+    
+    .content {
+        padding: 15px;
+    }
+    
+    .form-section {
+        padding: 15px;
+    }
+    
+    .summary-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    table {
+        font-size: 12px;
+    }
+    
+    th, td {
+        padding: 8px 5px;
+    }
+    
+    .month-number {
+        width: 25px;
+        height: 25px;
+        font-size: 0.8em;
+    }
+    
+    .radio-option span {
+        font-size: 0.9em;
+    }
+}
+
+/* Mejoras de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Modo oscuro (opcional) */
+@media (prefers-color-scheme: dark) {
+    .container {
+        background: rgba(17, 24, 39, 0.95);
+        color: #f9fafb;
+    }
+    
+    .form-section {
+        background: #1f2937;
+        border-color: #374151;
+    }
+    
+    .form-group input {
+        background: #374151;
+        border-color: #4b5563;
+        color: #f9fafb;
+    }
+    
+    .tipo-calculo {
+        background: #374151;
+        border-color: #4b5563;
+    }
+    
+    .summary-card {
+        background: #1f2937;
+        color: #f9fafb;
+    }
+    
+    .table-container {
+        background: #1f2937;
+    }
+    
+    th {
+        background: #374151;
+        color: #f9fafb;
+    }
+    
+    tbody tr:hover {
+        background-color: #374151;
     }
 }
